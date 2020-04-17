@@ -7,14 +7,18 @@
 
 #import "AppDelegate.h"
 #import "AudioMixer.h"
+#import <Carbon/Carbon.h>
+#import "JFHotkeyManager.h"
 
-static NSInteger const kDefaultVolume = 70;
+static NSInteger const kDefaultVolume = 80;
 
 @interface AppDelegate ()
 
 @property (nonatomic) NSStatusItem *menuItem;
 @property (nonatomic) BOOL muted;
 @property (nonatomic) NSInteger inputVolumeToUnmute;
+@property JFHotkeyManager *hkm;
+//@property __JFHotkey *shortcut;
 
 @end
 
@@ -25,6 +29,13 @@ static NSInteger const kDefaultVolume = 70;
     [self initDefaults];
     [self configureStatusBar];
     [self updateInputVolume];
+    
+    // Initialise a new hotkey manager
+    _hkm = [[JFHotkeyManager alloc] init];
+
+    // Bind the hotkey by key code reference number and modifiers:
+    // want modifiers? use `withModifiers:cmdKey + optionKey + shiftKey`
+    JFHotKeyRef hk = [_hkm bindKeyRef:80 withModifiers:0 target:self action:@selector(toggleMute)];
 }
 
 - (void)initDefaults
@@ -39,7 +50,7 @@ static NSInteger const kDefaultVolume = 70;
     
     NSStatusItem *menuItem =
     [statusBar statusItemWithLength:NSVariableStatusItemLength];
-    [menuItem setToolTip:@"[Un]MuteMic by CocoaHeads Brazil"];
+    [menuItem setToolTip:@"i haz teh mutez"];
     [menuItem setImage:[NSImage imageNamed:@"mic_on"]];
     [menuItem setHighlightMode:YES];
 
@@ -59,6 +70,11 @@ static NSInteger const kDefaultVolume = 70;
     } else {
         [self toggleMute];
     }
+}
+
+- (IBAction)didToggleMute:(NSMenuItem *)sender
+{
+    [self toggleMute];
 }
 
 - (void)toggleMute
@@ -96,11 +112,14 @@ static NSInteger const kDefaultVolume = 70;
     SetHardwareMute(muted);
     
     // set image
-    self.menuItem.image = [NSImage imageNamed:imageName];
+    self.menuItem.button.image = [NSImage imageNamed:imageName];
 }
 
 - (void)showMenu
 {
+//    NSMenuItem *mi = [self.menu itemWithTitle:@"Shortcut"];
+    
+    
     [self.menuItem popUpStatusItemMenu:self.menu];
 }
 
@@ -113,6 +132,17 @@ static NSInteger const kDefaultVolume = 70;
     
     self.inputVolumeToUnmute = [sender.title integerValue];
     [self updateInputVolume];
+}
+
+- (IBAction)didCallSetShortcut:(NSMenuItem *)sender
+{
+    NSMenuItem *menuItem = (NSMenuItem*) sender;
+    NSString *menuString = menuItem.title;
+
+    if ([menuString isEqualToString:@"Shortcut"])
+    {
+        NSLog(@"%@", menuString);
+    }
 }
 
 @end

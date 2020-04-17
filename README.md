@@ -10,15 +10,19 @@ macOS 10.10 Yosemite or higher version.
 
 ## Installation
 
-Download the [latest stable version](https://github.com/CocoaHeadsBrasil/MuteUnmuteMic/releases/download/1.4.2/Un.MuteMic.zip) or clone this repo and build & run.
+Download or clone this repo and build & run.  
+
+To build as a macos app: In XCode: choose _Product_ -> _Archive_ -> Click _Distribute App_ button -> Choose _Copy App_ -> Choose the export folder and click _Export_
 
 ## Usage
 
-![[Un]MuteMic usage](https://cloud.githubusercontent.com/assets/235208/10419593/143171fc-704a-11e5-8270-374ca898685b.gif)
+Use the shortcut key, click the icon, or open the menu and click _Toggle Mute_.
 
 ## Authors
 
-CocoaHeads Brasil: [http://www.cocoaheads.com.br/](http://www.cocoaheads.com.br/)
+* CocoaHeads Brasil: [http://www.cocoaheads.com.br/](http://www.cocoaheads.com.br/) 
+* [racecarparts](https://github.com/racecarparts)
+* Shoutout to: [https://github.com/jaz303/JFHotkeyManager](https://github.com/jaz303/JFHotkeyManager)
 
 ## License
 

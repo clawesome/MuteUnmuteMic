@@ -1,7 +1,8 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9046" systemVersion="14E46" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="16096" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9046"/>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="16096"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
@@ -19,6 +20,12 @@
         <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
         <menu id="d1i-xa-wlo">
             <items>
+                <menuItem title="Toggle Mute [F19]" id="jbg-be-dZJ">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="didToggleMute:" target="Voe-Tx-rLC" id="mqy-oo-eJP"/>
+                    </connections>
+                </menuItem>
                 <menuItem title="Input Volume" id="w4W-DI-DEg">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <menu key="submenu" title="Input Volume" autoenablesItems="NO" id="iVL-f8-mAL">
@@ -35,13 +42,13 @@
                                     <action selector="didSetVolumeInput:" target="Voe-Tx-rLC" id="b1z-78-Fgk"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="80" tag="5" id="OoN-lP-2Ll">
+                            <menuItem title="80" state="on" tag="5" id="OoN-lP-2Ll">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
                                     <action selector="didSetVolumeInput:" target="Voe-Tx-rLC" id="itM-AQ-plW"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="70" state="on" id="ZNu-ZY-zwa">
+                            <menuItem title="70" id="ZNu-ZY-zwa">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
                                     <action selector="didSetVolumeInput:" target="Voe-Tx-rLC" id="Ykp-jU-4Cw"/>
@@ -73,7 +80,7 @@
             <connections>
                 <outlet property="delegate" destination="Voe-Tx-rLC" id="30G-NN-Naz"/>
             </connections>
-            <point key="canvasLocation" x="-268" y="-315.5"/>
+            <point key="canvasLocation" x="-269" y="-276"/>
         </menu>
     </objects>
 </document>
